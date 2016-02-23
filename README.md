@@ -1,4 +1,4 @@
-== Purpose
+# Purpose
 
 This project is just a very simple demonstration of using the Linux
 'perf' utility to measure where the time is spent while running a user
@@ -9,7 +9,7 @@ Linux machine, some sample 'perf' commands, and sample output with
 comments on interpreting what that output means.
 
 
-== Interpreting the perf output
+# Interpreting the perf output
 
 The sample output file `perf-report.txt` included in this repository
 contains these lines:
@@ -67,7 +67,7 @@ Of the 6.54% of the total process time in `foo2`, all of it was when
 `main`, which in turn was called from `__libc_start_main`.
 
 
-== Running it yourself
+# Running it yourself
 
 To compile:
 
