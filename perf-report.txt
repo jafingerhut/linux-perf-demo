@@ -1,0 +1,93 @@
+# ========
+# captured on: Mon Feb 22 23:08:29 2016
+# hostname : ubuntu
+# os release : 3.13.0-79-generic
+# perf version : 3.13.11-ckt33
+# arch : x86_64
+# nrcpus online : 4
+# nrcpus avail : 4
+# cpudesc : Intel(R) Core(TM) i7-3635QM CPU @ 2.40GHz
+# cpuid : GenuineIntel,6,58,9
+# total memory : 4034472 kB
+# cmdline : /usr/lib/linux-tools-3.13.0-79/perf record --call-graph fp --pid=11149 
+# event : name = cpu-clock, type = 1, config = 0x0, config1 = 0x0, config2 = 0x0, excl_usr = 0, excl_kern = 0, excl_host = 0, excl_guest = 1, precise_ip = 0, attr_mmap2 = 0, attr_mmap  = 1, attr_mmap_data = 0
+# HEADER_CPU_TOPOLOGY info available, use -I to display
+# HEADER_NUMA_TOPOLOGY info available, use -I to display
+# pmu mappings: cpu = 4, software = 1, tracepoint = 2, breakpoint = 5
+# ========
+#
+# Samples: 31K of event 'cpu-clock'
+# Event count (approx.): 7968000000
+#
+# Overhead  Command      Shared Object                  Symbol
+# ........  .......  .................  ......................
+#
+    93.42%     try1  try1               [.] foo1              
+               |
+               --- foo1
+                  |          
+                  |--83.31%-- bar1
+                  |          main
+                  |          __libc_start_main
+                  |          
+                  |--16.68%-- bar2
+                  |          main
+                  |          __libc_start_main
+                   --0.00%-- [...]
+
+     6.54%     try1  try1               [.] foo2              
+               |
+               --- foo2
+                   bar2
+                   main
+                   __libc_start_main
+
+     0.02%     try1  [kernel.kallsyms]  [k] 0xffffffff8117a207
+               |          
+               |--28.57%-- 0xffffffff8172ddf6
+               |          foo1
+               |          
+               |--28.57%-- 0xffffffff8106ccd3
+               |          0xffffffff8106d275
+               |          0xffffffff81738795
+               |          0xffffffff8173711d
+               |          foo1
+               |          bar2
+               |          main
+               |          __libc_start_main
+               |          
+               |--14.29%-- 0xffffffff81373708
+               |          0xffffffff81457e15
+               |          0xffffffff8144f9a4
+               |          0xffffffff8145045c
+               |          0xffffffff8144d0b8
+               |          0xffffffff811be634
+               |          0xffffffff811bf069
+               |          0xffffffff817363dd
+               |          __GI___libc_write
+               |          0x3d29303030303328
+               |          
+               |--14.29%-- 0xffffffff8117a207
+               |          0xffffffff81731934
+               |          0xffffffff81731d3a
+               |          0xffffffff8172e068
+               |          vfprintf
+               |          __libc_start_main
+               |          
+                --14.29%-- 0xffffffff810979e7
+                          0xffffffff81729771
+                          0xffffffff8172a06e
+                          0xffffffff8172ddfc
+                          foo2
+
+     0.02%     try1  try1               [.] bar1              
+               |
+               --- bar1
+                   main
+                   __libc_start_main
+
+
+
+#
+# (For a higher level overview, try: perf report --sort comm,dso)
+#
