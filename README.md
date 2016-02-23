@@ -4,9 +4,9 @@ This project is just a very simple demonstration of using the Linux
 'perf' utility to measure where the time is spent while running a user
 space application.
 
-It consistets of a short C program that can be compiled and run on a
+It consists of a short C program that can be compiled and run on a
 Linux machine, some sample 'perf' commands, and sample output with
-comments on interpreting what that output means.
+notes on interpreting what that output means.
 
 
 # Interpreting the perf output
